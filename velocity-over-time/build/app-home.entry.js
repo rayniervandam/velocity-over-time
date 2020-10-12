@@ -12,6 +12,7 @@ const AppHome = class {
           speed: 0
         }
       }];
+    this.isFullScreen = false;
   }
   componentDidLoad() {
     if (navigator.geolocation) {
@@ -44,7 +45,7 @@ const AppHome = class {
     }
   }
   render() {
-    return (h("div", { class: "app-home" }, h("div", { class: "flex" }, h("div", { class: "data" }, h("div", { class: "key" }, "Location:"), h("div", { class: "value" }, "lat(", this.locations[this.locations.length - 1].coords.latitude.toFixed(2), "), long(", this.locations[this.locations.length - 1].coords.longitude.toFixed(2), ")")), h("div", { class: "data" }, h("div", { class: "key" }, "Speed:"), h("div", { class: "value" }, (this.locations[this.locations.length - 1].coords.speed * 3.6).toFixed(2), "km/h"))), h("div", { ref: el => this.graphElement = el })));
+    return (h("div", { class: "app-home", onClick: () => this.isFullScreen ? document.exitFullscreen() && (this.isFullScreen = false) : document.body.requestFullscreen() && (this.isFullScreen = true) }, h("div", { class: "flex" }, h("div", { class: "data" }, h("div", { class: "key" }, "Location:"), h("div", { class: "value" }, "lat(", this.locations[this.locations.length - 1].coords.latitude.toFixed(2), "), long(", this.locations[this.locations.length - 1].coords.longitude.toFixed(2), ")")), h("div", { class: "data" }, h("div", { class: "key" }, "Speed:"), h("div", { class: "value" }, (this.locations[this.locations.length - 1].coords.speed * 3.6).toFixed(2), "km/h"))), h("div", { ref: el => this.graphElement = el })));
   }
 };
 AppHome.style = appHomeCss;
