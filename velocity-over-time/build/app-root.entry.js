@@ -7,7 +7,7 @@ const AppRoot = class {
     registerInstance(this, hostRef);
   }
   render() {
-    return (h("div", null, h("header", null, h("h1", null, "Velocity Measurements")), h("main", null, h("stencil-router", null, h("stencil-route-switch", { scrollTopOffset: 0 }, h("stencil-route", { url: "/", component: "app-home", exact: true }))))));
+    return (h("div", null, h("header", null, h("h1", null, "Velocity Measurements")), h("main", null, h("stencil-router", null, h("stencil-route-switch", { scrollTopOffset: 0 }, h("stencil-route", { component: "app-home" }))))));
   }
 };
 AppRoot.style = appRootCss;
